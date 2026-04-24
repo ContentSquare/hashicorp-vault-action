@@ -1,5 +1,10 @@
 ## Unreleased
 
+Improvements:
+
+* Update action runtime from Node 20 to Node 24 ahead of GitHub's June 2026 deprecation of Node 20 on Actions runners
+* Bump jsrsasign from 11.1.0 to 11.1.3
+
 ## 3.4.0 (June 13, 2025)
 
 Bugs:
