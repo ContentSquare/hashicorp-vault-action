@@ -13,6 +13,4 @@ listener "tcp" {
   tls_require_and_verify_client_cert = "true"
 }
 
-storage "file" {
-  path = "/var/lib/vault"
-}
+storage "inmem" {}

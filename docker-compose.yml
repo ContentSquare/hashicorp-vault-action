@@ -42,16 +42,12 @@ services:
       VAULT_LOCAL_CONFIG: '{"disable_mlock": true}'
     ports:
     - 8200:8200
-    privileged: true
     healthcheck:
-      test: ["CMD-SHELL", "VAULT_ADDR=https://127.0.0.1:8200 vault status"]
+      test: ["CMD-SHELL", "VAULT_ADDR=https://127.0.0.1:8200 VAULT_CACERT=/etc/vault/ca.crt vault status; s=$?; [ $s -eq 0 ] || [ $s -eq 2 ]"]
       interval: 1s
       timeout: 5s
       retries: 30
     volumes:
     - ${PWD}/integrationTests/e2e-tls/configs:/etc/vault
-    - vault-data:/var/lib/vault:rw
     entrypoint: vault server -config=/etc/vault/config.hcl
 
-volumes:
-  vault-data:
