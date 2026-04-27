@@ -59,7 +59,7 @@ jobs:
       - name: NPM Run test;integration:basic
         run: npm run test:integration:basic
         env:
-          VAULT_HOST: localhost
+          VAULT_HOST: 127.0.0.1
           VAULT_PORT: 8200
           CI: true
 
@@ -95,7 +95,7 @@ jobs:
       - name: NPM Run test:integration:enterprise
         run: npm run test:integration:enterprise
         env:
-          VAULT_HOST: localhost
+          VAULT_HOST: 127.0.0.1
           VAULT_PORT: 8200
           CI: true
 

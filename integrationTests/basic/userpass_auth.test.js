@@ -83,7 +83,7 @@ describe('authenticate with userpass', () => {
                 },
             });
         } catch(err) {
-            console.warn('Create user in userpass', err.response.body);
+            console.warn('Create user in userpass', err.response?.body ?? err.message);
             throw err;
         }
     });
