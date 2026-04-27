@@ -29,7 +29,7 @@ services:
       - 8200:8200
     privileged: true
     healthcheck:
-      test: ["CMD-SHELL", "VAULT_ADDR=https://127.0.0.1:8200 vault status"]
+      test: ["CMD-SHELL", "VAULT_ADDR=http://127.0.0.1:8200 vault status"]
       interval: 1s
       timeout: 5s
       retries: 30
@@ -38,9 +38,16 @@ services:
     hostname: vault-tls
     environment:
       VAULT_CAPATH: /etc/vault/ca.crt
+      SKIP_SETCAP: "true"
+      VAULT_LOCAL_CONFIG: '{"disable_mlock": true}'
     ports:
     - 8200:8200
     privileged: true
+    healthcheck:
+      test: ["CMD-SHELL", "VAULT_ADDR=https://127.0.0.1:8200 vault status"]
+      interval: 1s
+      timeout: 5s
+      retries: 30
     volumes:
     - ${PWD}/integrationTests/e2e-tls/configs:/etc/vault
     - vault-data:/var/lib/vault:rw
