@@ -11,6 +11,11 @@ services:
     ports:
       - 8200:8200
     privileged: true
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      interval: 1s
+      timeout: 5s
+      retries: 30
   vault-enterprise:
     image: hashicorp/vault-enterprise:latest
     environment:
@@ -19,6 +24,11 @@ services:
     ports:
       - 8200:8200
     privileged: true
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      interval: 1s
+      timeout: 5s
+      retries: 30
   vault-tls:
     image: hashicorp/vault:latest
     hostname: vault-tls

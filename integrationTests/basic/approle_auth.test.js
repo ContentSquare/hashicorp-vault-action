@@ -101,7 +101,7 @@ describe('authenticate with approle', () => {
             });
             secretId = secretIdResponse.body.data.secret_id;
         } catch(err) {
-            console.warn('Create approle', err.response.body);
+            console.warn('Create approle', err.response?.body ?? err.message);
             throw err;
         }
     });

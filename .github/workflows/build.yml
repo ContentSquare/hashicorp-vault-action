@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Run docker compose
-        run: docker compose up -d vault
+        run: docker compose up -d --wait vault
 
       - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
@@ -70,7 +70,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Run docker compose
-        run: docker compose up -d vault-enterprise
+        run: docker compose up -d --wait vault-enterprise
         env:
           VAULT_LICENSE_CI: ${{ secrets.VAULT_LICENSE_CI }}
 
@@ -106,7 +106,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Run docker compose
-        run: docker compose up -d vault
+        run: docker compose up -d --wait vault
 
       - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
@@ -202,7 +202,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Run docker compose
-        run: docker compose up -d vault-tls
+        run: docker compose up -d --wait vault-tls
 
       - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
