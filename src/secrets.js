@@ -36,7 +36,7 @@ async function getSecrets(secretRequests, client, ignoreNotFound) {
     for (const secretRequest of secretRequests) {
         let { path, selector } = secretRequest;
 
-        const requestPath = `v1/${path}`;
+        const requestPath = `v1/${path.replace(/^\/+/, '')}`;
         let body;
         let cachedResponse = false;
         if (responseCache.has(requestPath)) {
