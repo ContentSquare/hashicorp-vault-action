@@ -196,7 +196,12 @@ const clientKeyRaw = `${process.env.VAULT_CLIENT_KEY}`;
             },
         });
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
+        if (error.response) {
+            console.log('Response status:', error.response.statusCode);
+            console.log('Response body:', error.response.body);
+        }
+        console.log(error.stack);
         process.exit(1);
     }
 })();
